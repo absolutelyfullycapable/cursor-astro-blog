@@ -38,17 +38,14 @@ fi
 if ! "$GH_BIN" repo view "${GITHUB_USER}/${REPO_NAME}" >/dev/null 2>&1; then
   "$GH_BIN" repo create "${REPO_NAME}" \
     --public \
-    --description "Cursor 실습용 Astro 정적 블로그 (GitHub Pages)" \
-    --source . \
-    --remote origin \
-    --push
-  echo "저장소 생성 및 push 완료"
-else
-  git add -A
-  git commit -m "chore: Astro 블로그 실습 프로젝트 업데이트" || true
-  git push -u origin main
-  echo "기존 저장소에 push 완료"
+    --description "Cursor 실습용 Astro 정적 블로그 (GitHub Pages)"
+  echo "저장소 생성 완료"
 fi
+
+git add -A
+git commit -m "chore: Astro 블로그 실습 프로젝트 업데이트" || true
+git push -u origin main
+echo "push 완료"
 
 echo ""
 echo "다음 단계:"

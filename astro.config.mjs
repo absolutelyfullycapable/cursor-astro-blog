@@ -7,4 +7,9 @@ import { defineConfig } from 'astro/config';
 export default defineConfig({
 	site: 'https://absolutelyfullycapable.github.io',
 	base: '/cursor-astro-blog',
+	markdown: {
+		shikiConfig: {
+			theme: 'everforest-dark',
+		},
+	},
 });
