@@ -4,18 +4,26 @@ set -euo pipefail
 REPO_NAME="cursor-astro-blog"
 GITHUB_USER="absolutelyfullycapable"
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
+GH_BIN="${GH_BIN:-gh}"
+
+if ! command -v "$GH_BIN" >/dev/null 2>&1; then
+  CANDIDATE="/Users/mac_al02360215/Desktop/CursorAI-study/.tmp-gh/gh_2.96.0_macOS_arm64/bin/gh"
+  if [ -x "$CANDIDATE" ]; then
+    GH_BIN="$CANDIDATE"
+  fi
+fi
 
 cd "$ROOT_DIR"
 
-if ! command -v gh >/dev/null 2>&1; then
+if ! command -v "$GH_BIN" >/dev/null 2>&1; then
   echo "GitHub CLI(gh)가 필요합니다."
   echo "설치: https://cli.github.com/"
   exit 1
 fi
 
-if ! gh auth status >/dev/null 2>&1; then
-  echo "GitHub 로그인이 필요합니다. 아래 명령을 실행해 주세요:"
-  echo "  gh auth login"
+if ! "$GH_BIN" auth status >/dev/null 2>&1; then
+  echo "GitHub 로그인이 필요합니다:"
+  echo "  $GH_BIN auth login"
   exit 1
 fi
 
@@ -27,8 +35,8 @@ if ! git remote get-url origin >/dev/null 2>&1; then
   git remote add origin "https://github.com/${GITHUB_USER}/${REPO_NAME}.git"
 fi
 
-if ! gh repo view "${GITHUB_USER}/${REPO_NAME}" >/dev/null 2>&1; then
-  gh repo create "${REPO_NAME}" \
+if ! "$GH_BIN" repo view "${GITHUB_USER}/${REPO_NAME}" >/dev/null 2>&1; then
+  "$GH_BIN" repo create "${REPO_NAME}" \
     --public \
     --description "Cursor 실습용 Astro 정적 블로그 (GitHub Pages)" \
     --source . \
@@ -37,7 +45,7 @@ if ! gh repo view "${GITHUB_USER}/${REPO_NAME}" >/dev/null 2>&1; then
   echo "저장소 생성 및 push 완료"
 else
   git add -A
-  git commit -m "chore: Astro 블로그 실습 프로젝트 초기 설정" || true
+  git commit -m "chore: Astro 블로그 실습 프로젝트 업데이트" || true
   git push -u origin main
   echo "기존 저장소에 push 완료"
 fi
