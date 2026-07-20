@@ -2,10 +2,14 @@
 
 Astro + Markdown + GitHub Pages로 만든 정적 블로그입니다.  
 
+---
+
 ## 배포 주소
 
 - 사이트: https://absolutelyfullycapable.github.io/cursor-astro-blog/
 - 저장소: https://github.com/absolutelyfullycapable/cursor-astro-blog
+
+---
 
 ## 기능
 
@@ -15,6 +19,8 @@ Astro + Markdown + GitHub Pages로 만든 정적 블로그입니다.
 - 파비콘 base64 인라인 (`src/assets/blogfavicon.js`)
 - 대표 아이콘 base64 인라인 (`src/assets/blogicon.js`) — 헤더·홈·About
 - 정적 빌드 + GitHub Actions 자동 배포
+
+---
 
 ## 글 추가 방법
 
@@ -29,6 +35,8 @@ category: '개발'
 tags: ['astro', 'markdown']
 ---
 ```
+
+---
 
 ## 로컬 개발
 
