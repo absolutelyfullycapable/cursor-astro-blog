@@ -6,8 +6,7 @@ Astro + Markdown + GitHub Pages로 만든 정적 블로그입니다.
 
 ## 배포 주소
 
-- 사이트: https://absolutelyfullycapable.github.io/cursor-astro-blog/
-- 저장소: https://github.com/absolutelyfullycapable/cursor-astro-blog
+https://absolutelyfullycapable.github.io/cursor-astro-blog/
 
 ---
 
