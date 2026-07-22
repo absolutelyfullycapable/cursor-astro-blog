@@ -35,19 +35,3 @@ category: '개발'
 tags: ['astro', 'markdown']
 ---
 ```
-
----
-
-## 로컬 개발
-
-```bash
-npm install
-npm run dev
-```
-
-## 빌드
-
-```bash
-npm run build
-npm run preview
-```
